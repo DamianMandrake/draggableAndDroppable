@@ -6,6 +6,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 
+import com.example.damian.draggableanddroppable.mtf.adapter.MtfAdapter;
+
 /**
  * Created by damian on 8/9/17.
  */
@@ -14,18 +16,23 @@ public class LongPressListener implements View.OnLongClickListener,TouchConstant
 
     private static final String TAG="LongPress";
     private boolean triggerDrag;
-    public LongPressListener(){
-        this(true);
-    }
-    public LongPressListener(boolean triggerDrag){
+    private MtfAdapter.MtfViewHolder mtfViewHolder;
+    private MtfAdapter mtfAdapter;
+    private static int position=-1;
+
+    public LongPressListener(boolean triggerDrag, MtfAdapter adapter, MtfAdapter.MtfViewHolder mtfViewHolder){
         this.triggerDrag=triggerDrag;
+        this.mtfAdapter=adapter;
+        this.mtfViewHolder=mtfViewHolder;
     }
 
     public void setTriggerDrag(boolean b){
         this.triggerDrag=b;
     }
 
-
+    public static int getPosition(){
+        return LongPressListener.position;
+    }
     //suppressing warnings
     @TargetApi(Build.VERSION_CODES.N)
     @Override
@@ -43,6 +50,7 @@ public class LongPressListener implements View.OnLongClickListener,TouchConstant
                     else
                         view.startDrag(clipData, shadowBuilder, view, 0);
 
+                    LongPressListener.position=this.mtfViewHolder.getAdapterPosition();
 
 
                 }

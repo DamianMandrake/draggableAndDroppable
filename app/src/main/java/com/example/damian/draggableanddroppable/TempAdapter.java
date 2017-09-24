@@ -18,26 +18,26 @@ import java.util.ArrayList;
  * Created by damian on 20/9/17.
  */
 
-public class TempAdapter extends RecyclerView.Adapter<TempAdapter.TempViewHolder> {
+/*public class TempAdapter extends RecyclerView.Adapter<TempAdapter.TempViewHolder> {
 
     private ArrayList<String> arrayList;
     private LayoutInflater inflater;
     private int layoutid;
-    private boolean isDraggable;
+    private boolean isDroppable;
     public TempAdapter(Context context,ArrayList<String> data,int layout){
         this(context,data,layout,false);
     }
-    public TempAdapter(Context context, ArrayList<String> data,int layout,boolean isDraggable){
+    public TempAdapter(Context context, ArrayList<String> data,int layout,boolean isDroppable){
         this.inflater=LayoutInflater.from(context);
         this.layoutid=layout;
         this.arrayList=data;
-        this.isDraggable=isDraggable;
+        this.isDroppable=isDroppable;
     }
 
     @Override
     public TempAdapter.TempViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=(View)this.inflater.inflate(this.layoutid,parent,false);
-        return new TempViewHolder(view,this.isDraggable,this);
+        return new TempViewHolder(view,this.isDroppable,this);
     }
 
     @Override
@@ -54,15 +54,15 @@ public class TempAdapter extends RecyclerView.Adapter<TempAdapter.TempViewHolder
       static class TempViewHolder extends MtfAdapter.MtfViewHolder{
         private TextView textView;
         private ImageView imageView;
-         public TempViewHolder(View view,boolean isDraggable,RecyclerView.Adapter adapter){
-             super(view,isDraggable,adapter);
+         public TempViewHolder(View view,boolean isDroppable,MtfAdapter adapter){
+             super(view,isDroppable,adapter);
              textView=(TextView)view.findViewById(R.id.tv1);
 
          }
         /* necessary .... */
-        public void setDragData(String x){
+   /*     public void setDragData(String x){
             super.setDragDropData(x);
         }
 
     }
-}
+}*/

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.damian.draggableanddroppable.mtf.adapter.MtfAdapter;
+import com.example.damian.draggableanddroppable.mtf.listeners.Remover;
 
 import java.util.ArrayList;
 
@@ -37,20 +38,26 @@ public class MainAdapter extends MtfAdapter {
     private ArrayList<String> arrayList;
     private LayoutInflater inflater;
     private int layoutid;
-    private boolean isDraggable;
+    private boolean isDroppable;
+    private Remover remover;
 
-    public MainAdapter(Context context, ArrayList<String> data,int layout,boolean isDraggable){
+    public MainAdapter(Context context, ArrayList<String> data,int layout,boolean isDroppable){
         super(data);
         this.inflater=LayoutInflater.from(context);
         this.layoutid=layout;
         this.arrayList=data;
-        this.isDraggable=isDraggable;
+        this.isDroppable=isDroppable;
+    }
+    public MainAdapter(Context context, ArrayList<String> data,int layout,boolean isDroppable,Remover remover ) {
+        this(context,data,layout,isDroppable);
+        this.remover=remover;
     }
 
-    @Override
+
+        @Override
     public MainAdapter.TempViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=(View)this.inflater.inflate(this.layoutid,parent,false);
-        return new TempViewHolder(view,this.isDraggable,this);
+        return new TempViewHolder(view,this.isDroppable,this,remover);
     }
 
     @Override
@@ -64,8 +71,8 @@ public class MainAdapter extends MtfAdapter {
     static class TempViewHolder extends MtfAdapter.MtfViewHolder {
         private TextView textView;
         private ImageView imageView;
-        public TempViewHolder(View view,boolean isDraggable,RecyclerView.Adapter adapter){
-            super(view,isDraggable,adapter);
+        public TempViewHolder(View view,boolean isDroppable,MtfAdapter adapter,Remover remover){
+            super(view,isDroppable,adapter,remover);
             textView=(TextView)view.findViewById(R.id.tv1);
 
         }

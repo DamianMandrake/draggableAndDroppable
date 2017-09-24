@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.damian.draggableanddroppable.mtf.listeners.DragListener;
+import com.example.damian.draggableanddroppable.mtf.listeners.DropListener;
 import com.example.damian.draggableanddroppable.mtf.listeners.LongPressListener;
 
 /**
@@ -77,7 +77,7 @@ public class MTFView extends LinearLayout {
         this.answerRecycler.setAdapter(adapter);
         /* since */
         //this.answerRecycler.setOnLongClickListener(new LongPressListener());
-        //this.answerRecycler.setOnDragListener(new DragListener());
+        //this.answerRecycler.setOnDropListener(new DropListener());
 
     }
 
@@ -85,7 +85,7 @@ public class MTFView extends LinearLayout {
         this.questionRecycler.setAdapter(adapter);
         /* this makes this recycler droppable only*/
         //this.questionRecycler.setLayoutManager(new LinearLayoutManager(this.context));
-        //this.questionRecycler.setOnDragListener(new DragListener());
+        //this.questionRecycler.setOnDropListener(new DropListener());
     }
 
 
